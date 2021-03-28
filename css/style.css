@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/**
+Font face
+*/
+@font-face{
+    font-family:"Falkin";
+    src: url('/Fonts/FalkinSerifPERSONAL.ttf') format("truetype");
+}
+@font-face{
+    font-family:"FalkinBold";
+    src: url('/Fonts/FalkinSerifBOldPERSONAL.ttf') format("truetype");
+}
+body{
+    overflow: hidden;
+}
+/**
+    barre du haut
+*/
+.infos{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: transparent;
+}
+
+.infos .status::before, .infos .pack::before, .infos .mini-map::before {
+    line-height: O.8em;
+    text-decoration: underline;
+    font-family: 'Falkin';
+}
+.status::before{
+    content: 'Status :';
+}
+.infos .status-content{
+    margin-top: .5rem;
+    font-family: 'Falkin';
+}
+
+.infos .status{
+    background-color: transparent;
+    /* border: 1px solid; */
+}
+.status .name{
+    font-family: 'FalkinBold';
+}
+.status .health-content{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.pack::before{
+    content: 'Pack Content :';
+}
+.infos .pack{
+    /* border: 1px solid; */
+}
+/* map */
+.infos #mini-map {
+    /* border: 1px solid; */
+}
