@@ -1,8 +1,6 @@
 import Knight from './Knight.js';
-import KeyHandler from './KeyHandler.js';
 
 const knight = new Knight();
-// const keyHandler = new KeyHandler();
 
 console.log(knight);
 
@@ -67,39 +65,31 @@ pack.width = '1fr';
 
 
 /**
- * diusplay Inventory
+ * keyDownHanlder
  */
  function pressKeyDown(e){
-        if(e.key == "i"|| e.key == "I"){
-            console.log('yep');
+        if(e.key == "i" || e.key == "I"){
             if(infos.classList.contains('hide') == false){   
                 infos.classList.add('hide');
             } else {
                 infos.classList.remove('hide');
             }
         }
-     }
+        if(e.key == "a" || e.key == "A"){
+            console.log('a');
+        }
+        if(e.key == "q" || e.key == "Q"){
+            console.log('q');
+        }
+        if(e.key == "o" || e.key == "O"){
+            console.log('o');
+        }
+        if(e.key == "p" || e.key == "P"){
+            console.log('p');
+        }
+        if(e.key == ' '){
+            console.log('Space');
+        }
+    }
 
 document.addEventListener('keydown', pressKeyDown, false);
-
-// function keyDownHanlder(e) {
-//     if(e.key == "Right" || e.key == "ArrowRight") {
-//         rightPressed = true;
-//     }
-//     else if(e.key == "Left" || e.key == "ArrowLeft") {
-//         leftPressed = true;
-//     }
-//     else if(e.key =="Up" || e.key == "ArrowUp"){
-//         upPressed = true;
-//     }
-//     else if(e.key =="Down" || e.key == "ArrowDown"){
-//         downPressed = true;
-//     }
-//     else if(e.key == "&"){
-//         inventory = true;
-//         console.log(inventory);
-//     }
-// }
-
-
-// apparition inventory
