@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+img{
+    display:none;
+}
 /**
 Font face
 */
@@ -21,6 +24,7 @@ body{
     barre du haut
 */
 .infos{
+    display: none;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     height: 100px;
@@ -32,6 +36,9 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: transparent;
+}
+.infos.hide{
+    display: none;
 }
 
 .infos .status::before, .infos .pack::before, .infos .mini-map::before {
@@ -54,7 +61,7 @@ body{
 .status .name{
     font-family: 'FalkinBold';
 }
-.status .health-content{
+.status .number{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .pack::before{
