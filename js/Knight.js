@@ -4,8 +4,8 @@ export default class Knight {
         this.health = 100;
         this.weapon = 'Tiny Sword';
         this.pack = [];
-        this.exp = 0
-        this.lvl = 0
+        this.exp = 0;
+        this.lvl = 0;
     }
     getHealth(){
         console.log('health');
