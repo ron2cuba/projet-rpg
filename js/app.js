@@ -1,8 +1,13 @@
 import { Level } from './class/Level.js';
 import { Hero } from './class/Hero.js';
+import { MapIntro } from './class/MapIntro.js';
+
 
 const level = new Level();
 const hero = new Hero();
+const map = new MapIntro();
+
+console.log(map);
 
 //canvas
 export const canvas = document.getElementById('canvas');
