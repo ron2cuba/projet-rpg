@@ -1,95 +1,91 @@
-import Knight from './Knight.js';
+import { Level } from './class/Level.js';
+import { Hero } from './class/Hero.js';
 
-const knight = new Knight();
+const level = new Level();
+const hero = new Hero();
 
-console.log(knight);
+//canvas
+export const canvas = document.getElementById('canvas');
+canvas.width = 750;
+canvas.height = 625;
+export const ctx = canvas.getContext("2d");
 
-/**
- * Var
- */
-const body = document.querySelector('body');
-let infos = document.createElement('div');
-let status = document.createElement('div');
-let pack = document.createElement('div');
-let map = document.createElement('canvas');
-let initialPosition = {x: 20,y: 150}
-
-
-/**
- * Canvas
- */
-const canvas = document.getElementById('canvas');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-canvas.style.border ="1px solid";
-
-// heroe
-let ctx = canvas.getContext('2d');
-let image = new Image();
-image.src = '../img/chara.png'
-ctx.drawImage(image, 0, 0, 34, 50, initialPosition.x, initialPosition.y, 34, 50);
-
-/**
- * Infos, status, map
- */
+// gestion des directions
+function keyHandler(e){
+    if(e.key == "o" || e.key == "O"){
+        console.log("o");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hero.moveLeft();
+    }
+    if(e.key == "p" || e.key == "P"){
+        console.log("p");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hero.moveRight();
+    }
+    if(e.key == "a" || e.key == "A"){
+        console.log("a");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hero.moveUp();
+    }
+    if(e.key == "q" || e.key == "Q"){
+        console.log("q");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hero.moveDown();
+    }
+    if(e.key == " "){
+        console.log("space");
+    }
+    if(e.key == "i"){
+        console.log("i");
+        document.querySelector('infos').remove.classList('')
+    }
+};
+// écoute d'évènement au clavier
+window.addEventListener('keydown', keyHandler);
 
 // infos
+let fixed = document.querySelector('.fixed');
+let infos = document.createElement('div');
 infos.classList.add('infos');
-body.appendChild(infos);
+fixed.appendChild(infos);
 
-// status
-status.classList.add('status');
-status.width = '1fr';
-status.height = '100px';
-infos.appendChild(status);
 
-// nom health lvl exp
-status.innerHTML = `
-    <div class="status-content">Name : <span class="name">${knight.name}</span></div>
-    <div class="status-content">Health : <span class="number">${knight.health}</span></div>
-    <div class="status-content">Weapon : <span class="name">${knight.weapon}</span></div>
-    <div class="status-content">Lvl : <span class="number">${knight.lvl}</span></div>
-    <div class="status-content">Exp : <span class="number">${knight.exp}</span></div>
-`;
+// audio
+let audio = document.createElement('audio');
+audio.classList.add('audio');
+audio.innerHTML = "Votre navigateur ne supporte pas la balise audio";
+document.querySelector('body').appendChild(audio);
 
-// empty
-map.setAttribute('id', 'mini-map');
-map.width = '1fr';
-map.height = '100px';
-infos.appendChild(map);
+// images
+export const chars = new Image();
+document.querySelector('body').appendChild(chars);
+chars.src = "../img/chara.png";
+chars.style.cssText = `display: none;`
 
-// pack
-pack.classList.add('pack');
-infos.appendChild(pack);
-pack.width = '1fr';
+/**
+ * MAPS
+ */
+let tutorial = level.worlds[0]
 
 
 /**
- * keyDownHanlder
+ * Loop
  */
- function pressKeyDown(e){
-        if(e.key == "i" || e.key == "I"){
-            if(infos.classList.contains('hide') == false){   
-                infos.classList.add('hide');
-            } else {
-                infos.classList.remove('hide');
-            }
-        }
-        if(e.key == "a" || e.key == "A"){
-            console.log('a');
-        }
-        if(e.key == "q" || e.key == "Q"){
-            console.log('q');
-        }
-        if(e.key == "o" || e.key == "O"){
-            console.log('o');
-        }
-        if(e.key == "p" || e.key == "P"){
-            console.log('p');
-        }
-        if(e.key == ' '){
-            console.log('Space');
-        }
-    }
 
-document.addEventListener('keydown', pressKeyDown, false);
+const loop = ()=>{
+
+    /**
+     * Methode pour la carte en background
+     */
+
+
+    /**
+     * Methode pour dessiner le héro
+     */
+    hero.draw();
+
+    // void ctx.drawImage(image, sx, sy, sLargeur, sHauteur, dx, dy, dLargeur, dHauteur);
+    // ctx.drawImage(chars, 32, 0, 32, 50, hero.coordonates.x, hero.coordonates.y, 32, 50);
+}
+// rafraichissement 
+setInterval(loop, 1);

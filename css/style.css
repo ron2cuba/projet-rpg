@@ -3,9 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-img{
-    display:none;
-}
 /**
 Font face
 */
@@ -19,58 +16,46 @@ Font face
 }
 body{
     overflow: hidden;
+    display: flex;
+}
+img{
+    display: none;
+}
+/**
+    Canvas
+*/
+#canvas{
+    padding-top: 10px;
+    margin-top: 100px;
 }
 /**
     barre du haut
 */
-.infos{
-    display: none;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    height: 100px;
-    width: 100%;
-    position: fixed;
+.infos::before{
+    content: "Status :";
+
+}
+.infos {
     top: 0;
     left: 0;
-    background-color: transparent;
+    background-color: "red";
+    height: 100px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: transparent;
 }
-.infos.hide{
-    display: none;
+.fixed {
+    position: fixed;
+    font-size: 1em;
+    margin-left: 1em;
+    margin-top: .5em;
+    user-select: none;
+    top:0;
+    left:0;
+    height: 300px;
+    margin-bottom: 100px;
+    /* background-color: red; */
 }
+.hide {
 
-.infos .status::before, .infos .pack::before, .infos .mini-map::before {
-    line-height: O.8em;
-    text-decoration: underline;
-    font-family: 'Falkin';
-}
-.status::before{
-    content: 'Status :';
-}
-.infos .status-content{
-    margin-top: .5rem;
-    font-family: 'Falkin';
-}
-
-.infos .status{
-    background-color: transparent;
-    /* border: 1px solid; */
-}
-.status .name{
-    font-family: 'FalkinBold';
-}
-.status .number{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.pack::before{
-    content: 'Pack Content :';
-}
-.infos .pack{
-    /* border: 1px solid; */
-}
-/* map */
-.infos #mini-map {
-    /* border: 1px solid; */
 }
